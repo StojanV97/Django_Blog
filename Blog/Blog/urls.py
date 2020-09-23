@@ -1,3 +1,4 @@
+
 """Blog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #kada proverava url pattern redom ce traziti u listi dok ne naidje na postojeci, zatim se preusmerava na blog_app.urls jer su povezhani sa include
     # dalje nastavlja trazenje url paterna u url listi  aplikacije prosledjene include metodi
     path('',include('blog_app.urls')),
+    path('register/',user_views.register,name='register'),
 ]

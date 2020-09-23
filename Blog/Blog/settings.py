@@ -29,8 +29,13 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+'''pip install django-crispy-forms
+  Third party app za stilizovanje forme
+'''
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'users.apps.UsersConfig',
     'blog_app.apps.BlogAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -119,3 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# podesavanje ya crispy_froms da koristi bootstrap4
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

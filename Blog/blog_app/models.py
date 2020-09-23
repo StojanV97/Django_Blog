@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
+    #python manage.py sqlmigrate blog_app 0001
+    #python manage.py migrations
+    #python manage.py shell
+    #python manage.py makemigrations
+
     title = models.CharField(max_length=100)
     content = models.TextField()
     # auto_now_add=True - postavice datum u trenutku kreiranja objekta, ne moze se dodanji izmeniti

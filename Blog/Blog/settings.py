@@ -127,3 +127,8 @@ STATIC_URL = '/static/'
 
 # podesavanje ya crispy_froms da koristi bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#linija koja prosledjuje utl nakon uspesnog logovanja
+LOGIN_REDIRECT_URL = 'blog-home'
+
+LOGIN_URL = 'login'

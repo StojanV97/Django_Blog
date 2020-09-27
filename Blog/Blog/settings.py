@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,10 +126,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# route where uploaded files are stored on file system, default location is profile_pics inside BASE_DIR
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#public url of root directory of media, browser can acces this directory via MEDIA_URL
+MEDIA_URL = '/media/'
+
+
 # podesavanje ya crispy_froms da koristi bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #linija koja prosledjuje utl nakon uspesnog logovanja
 LOGIN_REDIRECT_URL = 'blog-home'
 
+#Django ce traziti login na ovde zadatoj putanji
 LOGIN_URL = 'login'
+

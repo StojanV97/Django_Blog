@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -20,3 +21,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        # koristimo reverse kako bi nam vratio url na koji ce se preusmeriti nakon submitovane forme
+        # reverse samo vraca putanju kao string, predefinisana forma u view-u obavlja preusmeravanje
+        return reverse('post-detail', kwargs={'pk':self.pk}) 

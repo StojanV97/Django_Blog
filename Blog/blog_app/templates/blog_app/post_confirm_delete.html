@@ -5,15 +5,17 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-borrom mb-4">Blog Post</legend>
-            {{ form|crispy }}
+            <legend class="border-borrom mb-4">Delete Post</legend>
+            <h2>
+                Are you sure you want to delete post? "{{ object.title }}"
+            </h2>
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Create</button>
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+            #Dodaj dugme za cancelovanje
         </div>
     </form>
     
 </div>
 {% endblock content %}
-
 

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
+from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -18,6 +19,21 @@ class PostListView(ListView):
     template_name = 'blog_app/home.html' #<app>/<model>_<viewtype>.html
     context_object_name = 'posts' 
     ordering = ['-date_posted']  # redosled elemenata u listi posts
+    paginate_by = 4
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog_app/user_post.html' #<app>/<model>_<viewtype>.html
+    context_object_name = 'posts' 
+    #ordering = ['-date_posted']  # redosled elemenata u listi posts
+    paginate_by = 4
+
+    def get_queryset(self):
+        # self.kwargs.get() - uzimamo username iz urla , kwargs sadrzi parametre upita (query)
+        user = get_object_or_404(User,username=self.kwargs.get('username'))
+        #Calls get() on a given model manager, but it raises Http404 instead of the model’s DoesNotExist exception.
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 class PostDetailView(DetailView):
     model = Post
